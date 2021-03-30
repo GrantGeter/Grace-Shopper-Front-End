@@ -73,3 +73,12 @@ export const deleteProduct = async (id) => {
         console.error(error);
     }
 }
+
+export const editProfile = async (user, profile) => {
+    try {
+        const data = await axios.post(`${baseUrl}/user/${ username }/edit`, user);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
