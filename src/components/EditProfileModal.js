@@ -2,6 +2,7 @@ import {Modal, Button} from 'react-bootstrap';
 import {React, useState} from 'react';
 import EditProfile from './EditProfile';
 
+
 function MyVerticallyCenteredModal({  show, onHide, finished, setFinished }) {
   return (
     <Modal
@@ -15,7 +16,7 @@ function MyVerticallyCenteredModal({  show, onHide, finished, setFinished }) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Fill out the form to create an Routine!
+          Change any field to edit your profile
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

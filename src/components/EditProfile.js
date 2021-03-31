@@ -7,14 +7,14 @@ const EditProfile = ({ finished, setFinished }) => {
     
     const [ username, setUsername ] = useState('');
     const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState(false);
+    const [ password, setPassword ] = useState('');
     const [ name, setName ] = useState('');
     
     return (
     
         <div>              
              <Form onSubmit={ () => { editProfile({ id }, { username, email, password, name}); setFinished(finished + 1); } }>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlId="UsernameArea">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
                          as="textarea"
@@ -24,7 +24,7 @@ const EditProfile = ({ finished, setFinished }) => {
                         onChange={(event) => setUsername(event.target.value)}> 
                         </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlId="EmailArea">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                      as="textarea"
@@ -34,7 +34,7 @@ const EditProfile = ({ finished, setFinished }) => {
                      onChange={(event) => setEmail(event.target.value)}>
                      </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlId="PasswordArea">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                      as="textarea"
@@ -44,7 +44,7 @@ const EditProfile = ({ finished, setFinished }) => {
                      onChange={(event) => setPassword(event.target.value)}>
                      </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlId="NameArea">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                      as="textarea"
@@ -55,7 +55,7 @@ const EditProfile = ({ finished, setFinished }) => {
                      </Form.Control>
                 </Form.Group>
                 
-                <Button variant="success" onClick={ () => { editProfile({ id }, { username, email, password, name}); setFinished(finished + 1)} }>Submit</Button>{' '}
+                <Button variant="success" onClick={ () => { editProfile({ id }, { username, email, password, name}); setFinished(finished + 1)} }>Submit</Button>{''}
                 </Form>
         </div>
     )
