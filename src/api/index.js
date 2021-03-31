@@ -47,27 +47,112 @@ export const getProductsByCategory = async (category) => {
     }
 }
 
-export const createProduct = async (product) => {
+export const createProduct = async (product, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     try {
-        const data = await axios.post(`${baseUrl}/products/`, product);
+        const data = await axios.post(`${baseUrl}/products/`, product, config);
         return data;
     } catch (error) {
         console.error(error);
     }
 }
 
-export const updateProduct = async (id, product) => {
+export const updateProduct = async (id, product, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     try {
-        const data = await axios.patch(`${baseUrl}/products/update/${id}`, product);
+        const data = await axios.patch(`${baseUrl}/products/update/${id}`, product, config);
         return data;
     } catch (error) {
         console.error(error);
     }
 }
 
-export const deleteProduct = async (id) => {
+export const deleteProduct = async (id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     try {
-        const data = await axios.get(`${baseUrl}/products/delete/${id}`);
+        const data = await axios.get(`${baseUrl}/products/delete/${id}`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const addProductToOrder = async (order, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.post(`${baseUrl}/order`, order, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getOrders = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.get(`${baseUrl}/order`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getOrderById = async (id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.get(`${baseUrl}/order/${id}`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const completeOrder = async (id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.patch(`${baseUrl}/order/${id}`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteOrder = async (id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.delete(`${baseUrl}/order/${id}`, config);
         return data;
     } catch (error) {
         console.error(error);

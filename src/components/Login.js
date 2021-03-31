@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { loginUser } from '../api';
+import { storeToken } from '../auth';
 
-const Login = () => {
+const Login = ({ setCurrentUser }) => {
     const [user, setUser] = useState();
 
     const handleSubmit = (event) => {
@@ -18,12 +19,15 @@ const Login = () => {
             if (user) {
                 console.log(user);
                 loginUser(user)
-                    .then(console.log)
+                    .then(response => {
+                        setCurrentUser(response.data.user)
+                        storeToken(response.data.token);
+                    })
             }
         } else {
             initialRender.current = false;
         }
-    })
+    }, [user])
 
     return (
         <div>

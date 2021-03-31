@@ -5,15 +5,21 @@ import {
     Link
 } from "react-router-dom";
 
+import { useState } from 'react'
+
 import {
     Home,
     Account,
     Products,
     Register,
-    Login
+    Login,
+    Cart
 } from './index';
 
 const App = () => {
+
+    const [currentUser, setCurrentUser] = useState();
+
     return (
         <Router>
             <h1>Grace Shopper</h1>
@@ -34,23 +40,29 @@ const App = () => {
                     <li>
                         <Link to='/'>Home</Link>
                     </li>
+                    <li>
+                        <Link to='/cart'>Cart</Link>
+                    </li>
                 </ul>
             </nav>
             <Switch>
                 <Route exact path='/'>
                     <Home />
                 </Route>
+                <Route exact path='/cart'>
+                    <Cart />
+                </Route>
                 <Route exact path='/login'>
-                    <Login />
+                    <Login setCurrentUser={setCurrentUser} />
                 </Route>
                 <Route exact path='/register'>
-                    <Register />
+                    <Register setCurrentUser={setCurrentUser} />
                 </Route>
                 <Route exact path='/account'>
                     <Account />
                 </Route>
                 <Route exact path='/products'>
-                    <Products />
+                    <Products currentUser={currentUser} />
                 </Route>
             </Switch>
         </Router>
