@@ -1,19 +1,20 @@
 import {React, useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { editProfile } from '../api';
+import { getToken } from '../auth';
 
 
-const EditProfile = ({ finished, setFinished }) => {
-    
-    const [ username, setUsername ] = useState('');
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
-    const [ name, setName ] = useState('');
+const EditProfile = ({ currentUser }) => {
+    console.log(currentUser)
+    const [ username, setUsername ] = useState(undefined);
+    const [ email, setEmail ] = useState(undefined);
+    const [ password, setPassword ] = useState(undefined);
+    const [ name, setName ] = useState(undefined);
     
     return (
     
         <div>              
-             <Form onSubmit={ () => { editProfile({ id }, { username, email, password, name}); setFinished(finished + 1); } }>
+             <Form onSubmit={() => { editProfile({ id: currentUser.id, username: currentUser.username }, { username: username, email: email, password: password, name: name }, getToken()) }}>
                 <Form.Group controlId="UsernameArea">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
@@ -55,7 +56,7 @@ const EditProfile = ({ finished, setFinished }) => {
                      </Form.Control>
                 </Form.Group>
                 
-                <Button variant="success" onClick={ () => { editProfile({ id }, { username, email, password, name}); setFinished(finished + 1)} }>Submit</Button>{''}
+                <Button variant="success" onClick={() => { editProfile({ id: currentUser.id, username: currentUser.username }, { username: username, email: email, password: password, name: name }, getToken()) }}>Submit</Button>{''}
                 </Form>
         </div>
     )
