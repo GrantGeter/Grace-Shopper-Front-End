@@ -19,7 +19,7 @@ const Login = ({ setCurrentUser }) => {
             if (user) {
                 console.log(user);
                 loginUser(user)
-                    .then(response => {
+                    .then(response => {                        
                         setCurrentUser(response.data.user)
                         storeToken(response.data.token);
                     })

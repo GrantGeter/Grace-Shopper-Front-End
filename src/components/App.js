@@ -59,7 +59,7 @@ const App = () => {
                     <Register setCurrentUser={setCurrentUser} />
                 </Route>
                 <Route exact path='/account'>
-                    <Account />
+                    <Account currentUser={ currentUser }/>
                 </Route>
                 <Route exact path='/products'>
                     <Products currentUser={currentUser} />

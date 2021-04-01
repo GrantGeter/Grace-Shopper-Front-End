@@ -1,14 +1,15 @@
-import {React, useState} from 'react';
-import {Form, Button} from 'react-bootstrap';
+import { useState } from 'react';
 import EditProfileModal from './EditProfileModal';
 
 
-const Account = () => {
-
+const Account = ({ currentUser }) => {
+    
     return (
         <div>
             <h3>Account Page</h3>
-            <EditProfileModal />
+            {
+                currentUser ? <EditProfileModal currentUser={ currentUser }/> : null
+            }
         </div>
         
     )

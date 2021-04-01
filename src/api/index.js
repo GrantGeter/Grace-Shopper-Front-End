@@ -159,9 +159,15 @@ export const deleteOrder = async (id, token) => {
     }
 }
 
-export const editProfile = async (user, profile) => {
+export const editProfile = async (user, profile, token) => {
+    console.log("hherrefwfceadc", user)
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     try {
-        const data = await axios.post(`${baseUrl}/user/${ username }/edit`, user);
+        const data = await axios.post(`${baseUrl}/user/${ user.username }/edit`, (user, profile), config);
         return data;
     } catch (error) {
         console.error(error);
