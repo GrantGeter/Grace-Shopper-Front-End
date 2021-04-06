@@ -1,0 +1,53 @@
+.alertError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+}
+
+.alertSuccess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: green;
+    color: white;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+    height: 50vh;
+    width: 80vw;
+    border: 2px solid lightblue;
+}
+
+.orderList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 50vh;
+    width: 80vw;
+}
+
+.order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 50vh;
+    width: 80vw;
+}
