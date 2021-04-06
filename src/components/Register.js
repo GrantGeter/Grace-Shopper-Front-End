@@ -9,7 +9,14 @@ const Register = ({ setCurrentUser }) => {
         event.preventDefault();
         const [username, password, name, email] = event.target;
         if (username.value && password.value && name.value && email.value) {
-            setUser({ username: username.value, password: password.value, name: name.value, email: email.value, admin: false })
+
+            setUser({ username: username.value, password: password.value, name: name.value, email: email.value })
+        } else {
+            setDisplayMessage({
+                message: 'Please provide all required feilds',
+                type: 'error'
+            })
+            setIsShown(true);
         }
     }
 
@@ -20,8 +27,21 @@ const Register = ({ setCurrentUser }) => {
                 console.log(user);
                 registerUser(user)
                     .then(response => {
-                        setCurrentUser(response.data.user)
-                        storeToken(response.data.token);
+                        if (response.data) {
+                            setCurrentUser(response.data.user)
+                            storeToken(response.data.token);
+                            setDisplayMessage({
+                                message: 'You are registered!',
+                                type: 'success'
+                            })
+                            setIsShown(true);
+                        } else {
+                            setDisplayMessage({
+                                message: 'Error please try again ',
+                                type: 'Error'
+                            })
+                            setIsShown(true);
+                        }
                     })
             }
         } else {
@@ -34,13 +54,13 @@ const Register = ({ setCurrentUser }) => {
             <h3>Register Page</h3>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
-                <input type='text'></input>
+                <input type='text' required></input>
                 <label>Password</label>
                 <input type='password'></input>
                 <label>Name</label>
-                <input type='text'></input>
+                <input type='text' required></input>
                 <label>Email</label>
-                <input type='email'></input>
+                <input type='email' required></input>
                 <input type='submit'></input>
 
             </form>
