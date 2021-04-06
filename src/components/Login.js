@@ -20,7 +20,7 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
     }
 
     let initialRender = useRef(true);
-    useEffect(() => {
+     useEffect(() => {
         if (!initialRender.current) {
             if (user) {
                 console.log(user);
