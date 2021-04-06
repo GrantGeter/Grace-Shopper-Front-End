@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { registerUser } from '../api';
+import { storeToken } from '../auth';
 
 const Register = ({ setCurrentUser }) => {
     const [user, setUser] = useState();
@@ -8,7 +9,7 @@ const Register = ({ setCurrentUser }) => {
         event.preventDefault();
         const [username, password, name, email] = event.target;
         if (username.value && password.value && name.value && email.value) {
-            setUser({ username: username.value, password: password.value, name: name.value, email: email.value })
+            setUser({ username: username.value, password: password.value, name: name.value, email: email.value, admin: false })
         }
     }
 

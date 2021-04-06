@@ -1,0 +1,38 @@
+#acctPage {
+    border: 2px solid blue;
+    display: grid; 
+    grid-template-columns: 2fr 1fr;
+}
+
+.profile {
+    border: 2px solid black;
+    height: 500px;
+    display: grid;  
+}
+
+.sideProfile {
+    border: 2px solid red;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+}
+
+.signOut {
+    border: 1px solid green;
+    height: 30x;
+    width: 300px;
+}
+
+.editProfile {
+    justify-content: center;
+    align-content: center;
+    border: 1px solid green;
+    height: 30x;
+    width: 300px;
+}
+
+.orderHistory {
+    border: 1px solid green;
+    height: 30x;
+    width: 300px;
+}
