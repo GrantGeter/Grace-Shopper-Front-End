@@ -4,7 +4,7 @@ import { editProfile } from '../api';
 import { getToken } from '../auth';
 
 
-const EditProfile = ({ currentUser }) => {
+const EditProfile = ({ currentUser, setIsShown, setDisplayMessage, show, onHide }) => {
     console.log(currentUser)
     const [ username, setUsername ] = useState(undefined);
     const [ email, setEmail ] = useState(undefined);
@@ -56,7 +56,15 @@ const EditProfile = ({ currentUser }) => {
                      </Form.Control>
                 </Form.Group>
                 
-                <Button variant="success" onClick={() => { editProfile({ id: currentUser.id, username: currentUser.username }, { username: username, email: email, password: password, name: name }, getToken()) }}>Submit</Button>{''}
+                <Button variant="success" onClick={() => { 
+                                                        onHide();
+                                                        editProfile({ id: currentUser.id, username: currentUser.username }, { username: username, email: email, password: password, name: name }, getToken());
+                                                        setDisplayMessage({
+                                                        message: 'You have edited your profile!',
+                                                        type: 'success'
+                                                        });
+                                                        setIsShown(true);
+                                                        }}>Submit</Button>{''}
                 </Form>
         </div>
     )

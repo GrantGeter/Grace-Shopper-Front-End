@@ -20,6 +20,21 @@ export const registerUser = async (user) => {
     }
 }
 
+export const checkUser = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.get(`${baseUrl}/user/me`, config);
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getProducts = async () => {
     try {
         const data = await axios.get(`${baseUrl}/products`);
