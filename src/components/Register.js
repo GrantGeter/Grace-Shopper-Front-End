@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { registerUser } from '../api';
 import { storeToken } from '../auth';
 
-const Register = ({ setCurrentUser }) => {
+const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
     const [user, setUser] = useState();
 
     const handleSubmit = (event) => {
