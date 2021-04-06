@@ -13,12 +13,15 @@ import {
     Products,
     Register,
     Login,
-    Cart
+    Cart,
+    PopupMessage
 } from './index';
 
 const App = () => {
 
     const [currentUser, setCurrentUser] = useState();
+    const [isShown, setIsShown] = useState(false);
+    const [displayMessage, setDisplayMessage] = useState();
 
     return (
         <Router>
@@ -50,21 +53,40 @@ const App = () => {
                     <Home />
                 </Route>
                 <Route exact path='/cart'>
-                    <Cart />
+                    <Cart currentUser={currentUser} />
                 </Route>
                 <Route exact path='/login'>
-                    <Login setCurrentUser={setCurrentUser} />
+                    <Login
+                        setCurrentUser={setCurrentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/register'>
-                    <Register setCurrentUser={setCurrentUser} />
+                    <Register
+                        setCurrentUser={setCurrentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/account'>
                     <Account />
                 </Route>
                 <Route exact path='/products'>
-                    <Products currentUser={currentUser} />
+                    <Products
+                        currentUser={currentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
             </Switch>
+            <div>
+                {
+                    isShown ? <PopupMessage
+                        displayMessage={displayMessage}
+                        setIsShown={setIsShown} /> : ''
+                }
+            </div>
         </Router>
     )
 }
