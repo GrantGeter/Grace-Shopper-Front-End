@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { registerUser } from '../api';
 import { storeToken } from '../auth'
 
+
 const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
     const [user, setUser] = useState();
 
@@ -9,6 +10,7 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
         event.preventDefault();
         const [username, password, name, email] = event.target;
         if (username.value && password.value && name.value && email.value) {
+
             setUser({ username: username.value, password: password.value, name: name.value, email: email.value })
         } else {
             setDisplayMessage({

@@ -160,7 +160,6 @@ export const deleteOrder = async (id, token) => {
 }
 
 export const editProfile = async (user, profile, token) => {
-    console.log("hherrefwfceadc", user)
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
