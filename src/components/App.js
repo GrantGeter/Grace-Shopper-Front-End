@@ -70,7 +70,12 @@ const App = () => {
                     />
                 </Route>
                 <Route exact path='/account'>
-                    <Account currentUser={ currentUser }/>
+                    <Account 
+                    currentUser={ currentUser }
+                    setCurrentUser={setCurrentUser}
+                    setDisplayMessage={setDisplayMessage}
+                    setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/products'>
                     <Products
