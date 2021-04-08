@@ -73,16 +73,19 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
                     products.map((product, index) => {
                         return (
                             <div className='product' key={index}>
-                                <h4>{product.name}</h4>
-                                <p>Price: {product.price}</p>
-                                <p>Category: {product.category}</p>
-                                <p>{product.description}</p>
-                                {/* add photos */}
-                                <form onSubmit={() => { addToCart(event, product) }}>
-                                    <label>Quantity</label>
-                                    <input type='number' defaultValue='1' />
-                                    <input type='Submit' />
-                                </form>
+                                <img src={product.photos} style={{ width: '100%' }}></img>
+                                <div className='container'>
+                                    <h4>{product.name}</h4>
+                                    <p>Price: {product.price}</p>
+                                    <p>Category: {product.category}</p>
+                                    <p>{product.description}</p>
+
+                                    <form onSubmit={() => { addToCart(event, product) }}>
+                                        <label>Quantity</label>
+                                        <input type='number' defaultValue='1' />
+                                        <input type='Submit' />
+                                    </form>
+                                </div>
 
                             </div>
                         )
