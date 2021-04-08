@@ -5,7 +5,7 @@ import {
     Link
 } from "react-router-dom";
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
 import {
     Home,
@@ -14,7 +14,8 @@ import {
     Register,
     Login,
     Cart,
-    PopupMessage
+    PopupMessage,
+    NavBar
 } from './index';
 
 const App = () => {
@@ -26,7 +27,8 @@ const App = () => {
     return (
         <Router>
             <h1>Grace Shopper</h1>
-            <nav>
+            <NavBar />
+            {/* <nav>
                 <ul>
                     <li>
                         <Link to='/login'>Login</Link>
@@ -47,7 +49,7 @@ const App = () => {
                         <Link to='/cart'>Cart</Link>
                     </li>
                 </ul>
-            </nav>
+            </nav> */}
             <Switch>
                 <Route exact path='/'>
                     <Home />

@@ -3,15 +3,17 @@ import {React, useState} from 'react';
 import EditProfile from './EditProfile';
 
 
-function MyVerticallyCenteredModal({  show, onHide, currentUser, setIsShown, setDisplayMessage }) {
+function MyVerticallyCenteredModal({  show, onHide, user, setIsShown, setDisplayMessage, setUpdate, update }) {
   
   return (
     <Modal
       show={ show }
       onHide={ onHide }
-      currentUser={ currentUser }
+      user={ user }
       setIsShown={ setIsShown }
       setDisplayMessage={ setDisplayMessage }
+      setUpdate={ setUpdate }
+      update={ update }
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -22,7 +24,7 @@ function MyVerticallyCenteredModal({  show, onHide, currentUser, setIsShown, set
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <EditProfile currentUser={ currentUser } setIsShown={ setIsShown } setDisplayMessage={ setDisplayMessage } show={ show } onHide={ onHide }/>
+      <EditProfile user={ user } setIsShown={ setIsShown } setDisplayMessage={ setDisplayMessage } show={ show } onHide={ onHide } setUpdate={ setUpdate } update={ update }/>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={onHide}>Close</Button>
@@ -31,7 +33,7 @@ function MyVerticallyCenteredModal({  show, onHide, currentUser, setIsShown, set
   );
 }
 
-const  EditProfileModal = ({ currentUser, setIsShown, setDisplayMessage }) => {
+const  EditProfileModal = ({ user, setIsShown, setDisplayMessage, setUpdate, update }) => {
   const [modalShow, setModalShow] = useState(false);
 
   return (
@@ -43,9 +45,11 @@ const  EditProfileModal = ({ currentUser, setIsShown, setDisplayMessage }) => {
       <MyVerticallyCenteredModal
         show={ modalShow }
         onHide={() => setModalShow(false)}
-        currentUser={ currentUser }
+        user={ user }
         setIsShown={ setIsShown }
         setDisplayMessage={ setDisplayMessage }
+        setUpdate={ setUpdate }
+        update={ update }
       />
     </>
   );

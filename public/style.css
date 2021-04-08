@@ -19,12 +19,16 @@
 }
 
 .signOut {
+    display: grid;
+    justify-content: center;
+    align-content: center;
     border: 1px solid green;
     height: 30x;
     width: 300px;
 }
 
 .editProfile {
+    display: grid;
     justify-content: center;
     align-content: center;
     border: 1px solid green;
@@ -33,6 +37,9 @@
 }
 
 .orderHistory {
+    display: grid;
+    justify-content: center;
+    align-content: center;
     border: 1px solid green;
     height: 30x;
     width: 300px;

@@ -1,15 +1,17 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useHistory } from 'react'
 import { loginUser } from '../api';
 import { storeToken } from '../auth';
 
 const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
     const [user, setUser] = useState();
-
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         const [username, password] = event.target;
+        
         if (username.value && password.value) {
-            setUser({ username: username.value, password: password.value })
+            setUser({ username: username.value, password: password.value });
+            
         } else {
             setDisplayMessage({
                 message: 'Please provide a username and password',
@@ -17,7 +19,7 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
             });
             setIsShown(true);
         }
-    }
+    }    
 
     let initialRender = useRef(true);
      useEffect(() => {
