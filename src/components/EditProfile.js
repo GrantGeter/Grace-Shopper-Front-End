@@ -4,8 +4,8 @@ import { editProfile } from '../api';
 import { getToken } from '../auth';
 
 
-const EditProfile = ({ currentUser, setIsShown, setDisplayMessage, show, onHide }) => {
-    console.log(currentUser)
+const EditProfile = ({ user, setIsShown, setDisplayMessage, onHide, setUpdate, update }) => {
+    console.log(user)
     const [ username, setUsername ] = useState(undefined);
     const [ email, setEmail ] = useState(undefined);
     const [ password, setPassword ] = useState(undefined);
@@ -20,7 +20,7 @@ const EditProfile = ({ currentUser, setIsShown, setDisplayMessage, show, onHide 
                     <Form.Control 
                          as="textarea"
                          rows={ 1 } 
-                        placeholder={ currentUser.username } 
+                        placeholder={ user.username } 
                         value={ username } 
                         onChange={(event) => setUsername(event.target.value)}> 
                         </Form.Control>
@@ -30,7 +30,7 @@ const EditProfile = ({ currentUser, setIsShown, setDisplayMessage, show, onHide 
                     <Form.Control
                      as="textarea"
                      rows={ 1 }
-                     placeholder={ currentUser.email } 
+                     placeholder={ user.email } 
                      value={ email } 
                      onChange={(event) => setEmail(event.target.value)}>
                      </Form.Control>
@@ -50,7 +50,7 @@ const EditProfile = ({ currentUser, setIsShown, setDisplayMessage, show, onHide 
                     <Form.Control
                      as="textarea"
                      rows={ 1 }
-                     placeholder={ currentUser.name } 
+                     placeholder={ user.name } 
                      value={ name } 
                      onChange={(event) => setName(event.target.value)}>
                      </Form.Control>
@@ -58,7 +58,8 @@ const EditProfile = ({ currentUser, setIsShown, setDisplayMessage, show, onHide 
                 
                 <Button variant="success" onClick={() => { 
                                                         onHide();
-                                                        editProfile({ id: currentUser.id, username: currentUser.username }, { username: username, email: email, password: password, name: name }, getToken());
+                                                        setUpdate("true");
+                                                        editProfile({ id: user.id, username: user.username }, { username: username, email: email, password: password, name: name }, getToken());
                                                         setDisplayMessage({
                                                         message: 'You have edited your profile!',
                                                         type: 'success'

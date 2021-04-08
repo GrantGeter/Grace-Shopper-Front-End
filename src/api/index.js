@@ -28,7 +28,6 @@ export const checkUser = async (token) => {
     }
     try {
         const data = await axios.get(`${baseUrl}/user/me`, config);
-        console.log(data)
         return data;
     } catch (error) {
         console.error(error);
@@ -126,6 +125,20 @@ export const getOrders = async (token) => {
     }
     try {
         const data = await axios.get(`${baseUrl}/order`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getCompletedOrders = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.get(`${baseUrl}/order/completed_orders`, config);
         return data;
     } catch (error) {
         console.error(error);
