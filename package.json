@@ -18,6 +18,7 @@
     "url": "https://github.com/GrantGeter/Grace-Shopper-Front-End/issues"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.13.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "react": "^17.0.2",

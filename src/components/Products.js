@@ -7,11 +7,14 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
     const [orderToAdd, setOrderToAdd] = useState();
 
     const addToCart = (event, { id }) => {
+        let count = localStorage.getItem('orderCount');
         event.preventDefault();
         const [quantity] = event.target;
         if (quantity.value) {
             if (!currentUser) {
-                localStorage.setItem(`order ${id}`, JSON.stringify({
+                count++;
+                localStorage.setItem('orderCount', count)
+                localStorage.setItem(`order ${count}`, JSON.stringify({
                     productId: id,
                     quantity: quantity.value
                 }))
@@ -77,7 +80,7 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
                                 {/* add photos */}
                                 <form onSubmit={() => { addToCart(event, product) }}>
                                     <label>Quantity</label>
-                                    <input type='number' />
+                                    <input type='number' defaultValue='1' />
                                     <input type='Submit' />
                                 </form>
 

@@ -53,7 +53,11 @@ const App = () => {
                     <Home />
                 </Route>
                 <Route exact path='/cart'>
-                    <Cart currentUser={currentUser} />
+                    <Cart
+                        currentUser={currentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/login'>
                     <Login
@@ -70,7 +74,7 @@ const App = () => {
                     />
                 </Route>
                 <Route exact path='/account'>
-                    <Account currentUser={ currentUser }/>
+                    <Account currentUser={currentUser} />
                 </Route>
                 <Route exact path='/products'>
                     <Products

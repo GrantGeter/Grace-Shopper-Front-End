@@ -28,7 +28,8 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
                 console.log(user);
                 registerUser(user)
                     .then(response => {
-                        if (response.data) {
+                        if (response) {
+                            console.log(response.data)
                             setCurrentUser(response.data.user)
                             storeToken(response.data.token);
                             setDisplayMessage({
@@ -38,8 +39,8 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
                             setIsShown(true);
                         } else {
                             setDisplayMessage({
-                                message: 'Error please try again ',
-                                type: 'Error'
+                                message: 'Error please try again',
+                                type: 'error'
                             })
                             setIsShown(true);
                         }
