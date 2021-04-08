@@ -1,21 +1,38 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom'
 import { getOrders, getProductById } from '../api';
 import { getToken } from '../auth';
 
-const Cart = ({ currentUser }) => {
-    const history = useHistory();
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_51IdjzcA9fKf653FRBvHUXVoO4SLUsVcmOF0L252jSEAlPNyPHrpgHbarIStgPfyNjQRaGNFfs8PpLbZ7hmvH1PyA00OFPGbrl4');
+
+const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
 
     const [orders, setOrders] = useState([]);
     const [product, setProduct] = useState();
 
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
+        const stripe = await stripePromise;
+
         const orderKeys = Object.keys(localStorage).filter(key => key.split(' ')[0] === 'order')
         orderKeys.map(key => localStorage.removeItem(key));
-        setOrders([]);
-        history.push('/')
-    }
+        localStorage.removeItem('orderCount')
 
+        const response = await axios.post('http://localhost:3030/api/checkout', orders);
+        const session = response.data
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+        });
+        setOrders([]);
+
+        if (result.error) {
+            setDisplayMessage({
+                message: result.error.message,
+                type: 'error'
+            })
+            setIsShown(true);
+        }
+    }
 
     useEffect(() => {
         if (currentUser) {
