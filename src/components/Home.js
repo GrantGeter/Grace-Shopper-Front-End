@@ -4,10 +4,10 @@ import { getToken } from '../auth';
 
 
 
-
 const Home = () => {
 
 const [products, setProducts] = useState([]);
+
 
     useEffect(() => {
     getProducts()
@@ -57,6 +57,7 @@ const [products, setProducts] = useState([]);
             </div>
         
         )
+
 }
 
 export default Home;
