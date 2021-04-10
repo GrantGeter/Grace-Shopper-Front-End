@@ -4,7 +4,6 @@ import { getToken } from '../auth';
 
 
 
-
 const Home = () => {
 
 const [products, setProducts] = useState([]);
@@ -15,7 +14,7 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
     getProducts()
         .then(response => {
-            setProducts(response.data);
+            setProducts(response.data.allProducts);
         })
 }, [])
 

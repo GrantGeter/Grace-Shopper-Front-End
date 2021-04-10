@@ -52,8 +52,10 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
     }, [user])
 
     return (
-        <div>
-            <h3>Register Page</h3>
+        <div className='outerRegisterDiv'>
+        <h3>Register Page</h3>
+        <div className ='registerDiv'>
+            {/* <h3>Register Page</h3> */}
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input type='text' required></input>
@@ -66,6 +68,7 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
                 <input type='submit'></input>
 
             </form>
+        </div>
         </div>
     )
 }
