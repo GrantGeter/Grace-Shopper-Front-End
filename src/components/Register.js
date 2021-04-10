@@ -58,13 +58,13 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
             {/* <h3>Register Page</h3> */}
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
-                <input type='text' required></input>
+                <input className="inputBoxReg" type='text' required></input>
                 <label>Password</label>
-                <input type='password'></input>
+                <input className="inputBoxReg" type='password'></input>
                 <label>Name</label>
-                <input type='text' required></input>
+                <input className="inputBoxReg" type='text' required></input>
                 <label>Email</label>
-                <input type='email' required></input>
+                <input className="inputBoxReg" type='email' required></input>
                 <input type='submit'></input>
 
             </form>
