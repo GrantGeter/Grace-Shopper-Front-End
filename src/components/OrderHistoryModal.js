@@ -43,7 +43,6 @@ const  OrderHistoryModal = ({ currentUser }) => {
   useEffect (() => {
     async function checkOrdersFunction() {
         const { data }  = await getCompletedOrders(getToken());
-        console.log(data)
         setOrders(data)
     }
     checkOrdersFunction();
