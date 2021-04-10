@@ -173,6 +173,20 @@ export const completeOrder = async (id, token) => {
     }
 }
 
+export const updateOrder = async (id, token, update) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.patch(`${baseUrl}/order/${id}`, update, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const deleteOrder = async (id, token) => {
     const config = {
         headers: {
@@ -194,7 +208,7 @@ export const editProfile = async (user, profile, token) => {
         }
     }
     try {
-        const data = await axios.post(`${baseUrl}/user/${ user.username }/edit`, (user, profile), config);
+        const data = await axios.post(`${baseUrl}/user/${user.username}/edit`, (user, profile), config);
         return data;
     } catch (error) {
         console.error(error);

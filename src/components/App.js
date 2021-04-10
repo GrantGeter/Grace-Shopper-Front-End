@@ -18,11 +18,19 @@ import {
     NavBar
 } from './index';
 
+import { checkUser } from '../api'
+import { getToken } from '../auth'
+
 const App = () => {
 
     const [currentUser, setCurrentUser] = useState();
     const [isShown, setIsShown] = useState(false);
     const [displayMessage, setDisplayMessage] = useState();
+
+    useEffect(() => {
+        checkUser(getToken())
+            .then(response => setCurrentUser(response.data))
+    }, [])
 
     return (
         <Router>
@@ -51,7 +59,7 @@ const App = () => {
                 </ul>
             </nav> */}
             <Switch>
-                <Route exact path='/'>
+                <Route exact path={['/home', '/']}>
                     <Home />
                 </Route>
                 <Route exact path='/cart'>

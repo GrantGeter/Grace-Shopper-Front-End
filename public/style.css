@@ -86,8 +86,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 50vh;
-    width: 80vw;
+    width: 100%;
 }
 
 .order {
@@ -95,8 +94,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    height: 50vh;
-    width: 80vw;
+    width: 100%;
 }
 
 .productList {
