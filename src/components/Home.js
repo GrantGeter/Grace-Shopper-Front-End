@@ -9,13 +9,17 @@ const Home = () => {
 
 const [products, setProducts] = useState([]);
 
-console.log(useEffect(() => {
+
+
+
+useEffect(() => {
     getProducts()
         .then(response => {
             setProducts(response.data);
         })
-}, []))
- 
+}, [])
+
+
 console.log(getProducts())
 
 
