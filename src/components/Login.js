@@ -1,15 +1,25 @@
 import { useState, useRef, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { loginUser } from '../api';
 import { storeToken } from '../auth';
 
-const Login = ({ setCurrentUser }) => {
+const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
+    const history = useHistory();
     const [user, setUser] = useState();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const [username, password] = event.target;
+
         if (username.value && password.value) {
-            setUser({ username: username.value, password: password.value })
+            setUser({ username: username.value, password: password.value });
+
+        } else {
+            setDisplayMessage({
+                message: 'Please provide a username and password',
+                type: 'error'
+            });
+            setIsShown(true);
         }
     }
 
@@ -20,8 +30,22 @@ const Login = ({ setCurrentUser }) => {
                 console.log(user);
                 loginUser(user)
                     .then(response => {
-                        setCurrentUser(response.data.user)
-                        storeToken(response.data.token);
+                        if (response.data) {
+                            setCurrentUser(response.data.user)
+                            storeToken(response.data.token);
+                            setDisplayMessage({
+                                message: 'You are logged in!',
+                                type: 'success'
+                            });
+                            setIsShown(true);
+                            history.push('/');
+                        } else {
+                            setDisplayMessage({
+                                message: 'Incorrect username or password',
+                                type: 'error'
+                            });
+                            setIsShown(true);
+                        }
                     })
             }
         } else {
@@ -34,9 +58,9 @@ const Login = ({ setCurrentUser }) => {
             <h3>Login Page</h3>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
-                <input type='text'></input>
+                <input type='text' required></input>
                 <label>Password</label>
-                <input type='password'></input>
+                <input type='password' required></input>
                 <input type='submit'></input>
             </form>
         </div>

@@ -5,7 +5,7 @@ import {
     Link
 } from "react-router-dom";
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
 import {
     Home,
@@ -13,17 +13,30 @@ import {
     Products,
     Register,
     Login,
-    Cart
+    Cart,
+    PopupMessage,
+    NavBar
 } from './index';
+
+import { checkUser } from '../api'
+import { getToken } from '../auth'
 
 const App = () => {
 
     const [currentUser, setCurrentUser] = useState();
+    const [isShown, setIsShown] = useState(false);
+    const [displayMessage, setDisplayMessage] = useState();
+
+    useEffect(() => {
+        checkUser(getToken())
+            .then(response => setCurrentUser(response.data))
+    }, [])
 
     return (
         <Router>
             <h1>Grace Shopper</h1>
-            <nav>
+            <NavBar />
+            {/* <nav>
                 <ul>
                     <li>
                         <Link to='/login'>Login</Link>
@@ -44,27 +57,56 @@ const App = () => {
                         <Link to='/cart'>Cart</Link>
                     </li>
                 </ul>
-            </nav>
+            </nav> */}
             <Switch>
-                <Route exact path='/'>
+                <Route exact path={['/home', '/']}>
                     <Home />
                 </Route>
                 <Route exact path='/cart'>
-                    <Cart />
+                    <Cart
+                        currentUser={currentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/login'>
-                    <Login setCurrentUser={setCurrentUser} />
+                    <Login
+                        setCurrentUser={setCurrentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/register'>
-                    <Register setCurrentUser={setCurrentUser} />
+                    <Register
+                        setCurrentUser={setCurrentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/account'>
-                    <Account />
+
+                    <Account 
+                    currentUser={ currentUser }
+                    setCurrentUser={setCurrentUser}
+                    setDisplayMessage={setDisplayMessage}
+                    setIsShown={setIsShown}
+                    />
                 </Route>
                 <Route exact path='/products'>
-                    <Products currentUser={currentUser} />
+                    <Products
+                        currentUser={currentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
+                    />
                 </Route>
             </Switch>
+            <div>
+                {
+                    isShown ? <PopupMessage
+                        displayMessage={displayMessage}
+                        setIsShown={setIsShown} /> : ''
+                }
+            </div>
         </Router>
     )
 }

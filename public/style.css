@@ -56,3 +56,118 @@
   font-size: 140%;
   width: 60px;
 }
+
+#acctPage {
+    border: 2px solid blue;
+    display: grid; 
+    grid-template-columns: 2fr 1fr;
+}
+
+.profile {
+    border: 2px solid black;
+    height: 500px;
+    display: grid;  
+}
+
+.sideProfile {
+    border: 2px solid red;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+}
+
+.signOut {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid green;
+    height: 30x;
+    width: 300px;
+}
+
+.editProfile {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid green;
+    height: 30x;
+    width: 300px;
+}
+
+.orderHistory {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid green;
+    height: 30x;
+    width: 300px;
+}
+
+.alertError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+}
+
+.alertSuccess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: green;
+    color: white;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+    height: 50vh;
+    width: 80vw;
+    border: 2px solid lightblue;
+}
+
+.orderList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.productList {
+    display: grid;
+    place-items: center;
+}
+
+.product {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+.container {
+    text-align: center;
+    padding: 10px 20px;
+  }

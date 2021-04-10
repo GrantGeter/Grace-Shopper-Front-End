@@ -20,6 +20,20 @@ export const registerUser = async (user) => {
     }
 }
 
+export const checkUser = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.get(`${baseUrl}/user/me`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getProducts = async () => {
     try {
         const data = await axios.get(`${baseUrl}/products`);
@@ -117,6 +131,20 @@ export const getOrders = async (token) => {
     }
 }
 
+export const getCompletedOrders = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.get(`${baseUrl}/order/completed_orders`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getOrderById = async (id, token) => {
     const config = {
         headers: {
@@ -145,6 +173,20 @@ export const completeOrder = async (id, token) => {
     }
 }
 
+export const updateOrder = async (id, token, update) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.patch(`${baseUrl}/order/${id}`, update, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const deleteOrder = async (id, token) => {
     const config = {
         headers: {
@@ -153,6 +195,20 @@ export const deleteOrder = async (id, token) => {
     }
     try {
         const data = await axios.delete(`${baseUrl}/order/${id}`, config);
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const editProfile = async (user, profile, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+        const data = await axios.post(`${baseUrl}/user/${user.username}/edit`, (user, profile), config);
         return data;
     } catch (error) {
         console.error(error);
