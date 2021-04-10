@@ -5,7 +5,6 @@ import { getToken } from '../auth';
 
 
 const EditProfile = ({ user, setIsShown, setDisplayMessage, onHide, setUpdate, update }) => {
-    console.log(user)
     const [ username, setUsername ] = useState(undefined);
     const [ email, setEmail ] = useState(undefined);
     const [ password, setPassword ] = useState(undefined);
@@ -14,8 +13,9 @@ const EditProfile = ({ user, setIsShown, setDisplayMessage, onHide, setUpdate, u
     return (
     
         <div>              
-             <Form>
-                <Form.Group controlId="UsernameArea">
+             <Form style={{ backgroundColor: "rgb(240, 234, 234)", borderRadius: "10px", padding: "10px", border: "solid #2980b9 5px",
+                boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
+                <Form.Group controlId="UsernameArea" >
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
                          as="textarea"

@@ -26,10 +26,13 @@ const App = () => {
     const [currentUser, setCurrentUser] = useState();
     const [isShown, setIsShown] = useState(false);
     const [displayMessage, setDisplayMessage] = useState();
-
+    
     useEffect(() => {
-        checkUser(getToken())
+        if(getToken()){
+            checkUser(getToken())
             .then(response => setCurrentUser(response.data))
+        }
+        
     }, [])
 
     return (
