@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
-import { getProducts } from '../api';
+import { getProducts, addProductToOrder } from '../api';
+import { getToken } from '../auth';
+
+
+
 
 const Home = () => {
 
@@ -11,7 +15,11 @@ console.log(useEffect(() => {
             setProducts(response.data);
         })
 }, []))
+ 
 console.log(getProducts())
+
+
+
 
     return (
 
@@ -25,13 +33,21 @@ console.log(getProducts())
   <div className="featuredProducts">
                 {
             products.map((product, index) => {
+                        if (index === 8){
+                            return;
+                        }
                         return (
                             <div className='product' key={index}>
                                 {/* photo */}
                                  <h4>{product.name}</h4>
                                 <p>{product.description}</p>
                                 <p>Price- {product.price}</p>
-                                <p>Category- {product.category}</p>                                
+                                <p>Category- {product.category}</p>    
+                                <form onSubmit={() => { addToCart(event, product) }}>
+                                    <label>Quantity</label>
+                                    <input type='number' />
+                                    <button className='btn' type = 'submit'>Add to Cart</button>
+                                </form>                            
                             </div>
                         )
                     })
