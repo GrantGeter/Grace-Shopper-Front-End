@@ -15,6 +15,7 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
                 count++;
                 localStorage.setItem('orderCount', count)
                 localStorage.setItem(`order ${count}`, JSON.stringify({
+                    id: count,
                     productId: id,
                     quantity: quantity.value
                 }))
@@ -82,7 +83,7 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
 
                                     <form onSubmit={() => { addToCart(event, product) }}>
                                         <label>Quantity</label>
-                                        <input type='number' defaultValue='1' className="inputBox"/>
+                                        <input type='number' defaultValue='1' className="inputBox" />
                                         <button type='Submit' className='btn'>Add to cart</button>
                                     </form>
                                 </div>
