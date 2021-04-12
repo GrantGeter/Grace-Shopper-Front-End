@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { getOrders, getProductById, updateOrder } from '../api';
+import { deleteOrder, getOrders, getProductById, updateOrder } from '../api';
 import { getToken } from '../auth';
 
 import { loadStripe } from '@stripe/stripe-js';
@@ -32,14 +32,31 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
         if (quantity.value) {
             if (quantity.value < 1) {
                 setDisplayMessage({
-                    message: 'Negative quantity not allowed',
+                    message: 'Quantity not allowed',
                     type: 'error'
                 })
                 setIsShown(true);
                 return;
             }
-            updateOrder(orderId, getToken(), { quantity: quantity.value })
-                .then(response => setCartRefresh(response))
+            if (currentUser) {
+                updateOrder(orderId, getToken(), { quantity: quantity.value })
+                    .then(response => setCartRefresh(response))
+            } else {
+                const order = JSON.parse(localStorage.getItem(`order ${orderId}`));
+                console.log(order);
+                localStorage.setItem(`order ${orderId}`, JSON.stringify({ id: orderId, quantity: quantity.value, productId: order.productId }))
+                setCartRefresh(order);
+            }
+        }
+    }
+
+    const handleDelete = async (id) => {
+        if (currentUser) {
+            const deletedOrder = await deleteOrder(id, getToken());
+            setCartRefresh(deletedOrder);
+        } else {
+            localStorage.removeItem(`order ${id}`);
+            setCartRefresh(id);
         }
     }
 
@@ -116,6 +133,7 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
                                             </form>
                                         </div>
                                         <p>price: ${product?.price * order.quantity}</p>
+                                        <button onClick={() => handleDelete(order.id)}>remove</button>
 
                                     </div>
                                 )
