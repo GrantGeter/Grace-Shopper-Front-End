@@ -26,7 +26,6 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
 
 
     const changeQuantity = (event, orderId) => {
-        console.log(orderId);
         const [quantity] = event.target;
 
         if (quantity.value) {
@@ -103,15 +102,17 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
         }
     }, [orders]);
 
+    let cartTotal = 0;
+
     return (
         <>
             <h3>Cart</h3>
             <div className='cart'>
-
                 <div className='orderList'>
                     {
                         orders?.length > 0 ?
                             orderProducts.map(({ order, product }) => {
+                                cartTotal += product.price * order.quantity;
                                 return (
                                     <div className='order' key={order.id}>
                                         <div>
@@ -142,7 +143,7 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
                     }
                 </div>
             </div>
-            {/* <h3>Total: ${cartTotal}</h3> */}
+            <h3>Total: ${cartTotal}</h3>
             <button onClick={handleCheckout}>Checkout</button>
         </>
     )

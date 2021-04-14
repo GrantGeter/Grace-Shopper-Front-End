@@ -15,7 +15,8 @@ import {
     Login,
     Cart,
     PopupMessage,
-    NavBar
+    NavBar,
+    CheckoutComplete
 } from './index';
 
 import { checkUser } from '../api'
@@ -26,13 +27,13 @@ const App = () => {
     const [currentUser, setCurrentUser] = useState();
     const [isShown, setIsShown] = useState(false);
     const [displayMessage, setDisplayMessage] = useState();
-    
+
     useEffect(() => {
-        if(getToken()){
+        if (getToken()) {
             checkUser(getToken())
-            .then(response => setCurrentUser(response.data))
+                .then(response => setCurrentUser(response.data))
         }
-        
+
     }, [])
 
     return (
@@ -88,11 +89,11 @@ const App = () => {
                 </Route>
                 <Route exact path='/account'>
 
-                    <Account 
-                    currentUser={ currentUser }
-                    setCurrentUser={setCurrentUser}
-                    setDisplayMessage={setDisplayMessage}
-                    setIsShown={setIsShown}
+                    <Account
+                        currentUser={currentUser}
+                        setCurrentUser={setCurrentUser}
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
                     />
                 </Route>
                 <Route exact path='/products'>
@@ -100,6 +101,11 @@ const App = () => {
                         currentUser={currentUser}
                         setDisplayMessage={setDisplayMessage}
                         setIsShown={setIsShown}
+                    />
+                </Route>
+                <Route exact path='/completed'>
+                    <CheckoutComplete
+                        currentUser={currentUser}
                     />
                 </Route>
             </Switch>

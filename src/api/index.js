@@ -167,6 +167,7 @@ export const completeOrder = async (id, token) => {
     }
     try {
         const data = await axios.patch(`${baseUrl}/order/${id}`, config);
+        console.log(data);
         return data;
     } catch (error) {
         console.error(error);
