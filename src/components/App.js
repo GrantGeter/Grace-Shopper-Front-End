@@ -38,7 +38,7 @@ const App = () => {
 
     return (
         <Router>
-            <h1>Grace Shopper</h1>
+            <div className="title"><h1>Grace Shopper</h1></div>
             <NavBar />
             {/* <nav>
                 <ul>
