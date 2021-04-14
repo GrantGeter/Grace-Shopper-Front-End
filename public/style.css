@@ -217,6 +217,22 @@
     width: 100%;
 }
 
+.completed {
+  display: grid;
+  place-content: center;
+  background: #2980b9;
+  height: 80vh;
+  width: 80vw;
+  border: 5px solid #3498db;
+  border-radius: 10px;
+}
+
+.completedContainer {
+  display: grid;
+  place-content: center;
+  padding: 1.75em;
+}
+
 .productList {
     display: grid;
     place-items: center;
@@ -279,4 +295,5 @@
 .loginPage {
     height:100vh;
 }
+
 
