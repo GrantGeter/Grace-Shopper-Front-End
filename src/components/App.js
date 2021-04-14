@@ -26,7 +26,7 @@ const App = () => {
     const [currentUser, setCurrentUser] = useState();
     const [isShown, setIsShown] = useState(false);
     const [displayMessage, setDisplayMessage] = useState();
-    
+
     useEffect(() => {
         if(getToken()){
             checkUser(getToken())
@@ -37,7 +37,7 @@ const App = () => {
 
     return (
         <Router>
-            <h1>Grace Shopper</h1>
+            <div className="title"><h1>Grace Shopper</h1></div>
             <NavBar />
             {/* <nav>
                 <ul>

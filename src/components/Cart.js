@@ -104,7 +104,7 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
     }, [orders]);
 
     return (
-        <>
+        <div className="cartPage">
             <h3>Cart</h3>
             <div className='cart'>
 
@@ -144,7 +144,7 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
             </div>
             {/* <h3>Total: ${cartTotal}</h3> */}
             <button onClick={handleCheckout}>Checkout</button>
-        </>
+        </div>
     )
 }
 
