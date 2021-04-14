@@ -7,3 +7,4 @@ export { default as Register } from './Register';
 export { default as Cart } from './Cart';
 export { default as PopupMessage } from './PopUpMessage';
 export { default as NavBar } from './NavBar';
+export { default as CheckoutComplete } from './CheckoutComplete';
