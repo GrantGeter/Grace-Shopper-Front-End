@@ -6,7 +6,6 @@ const OrderHistoryCard = ({ order }) => {
     useEffect (() => {
         async function fetchProductName() {
             const { data } = await getProductById(order.productId);
-            console.log(data)
             setProduct(data)
         }
         fetchProductName();
