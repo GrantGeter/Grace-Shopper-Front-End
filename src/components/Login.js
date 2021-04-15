@@ -55,7 +55,8 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
 
     return (
         <div>
-            <h3>Login Page</h3>
+                        <h3>Login Page</h3>
+        <div className='loginDiv'>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input type='text' required></input>
@@ -63,6 +64,7 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
                 <input type='password' required></input>
                 <input type='submit'></input>
             </form>
+        </div>
         </div>
     )
 }

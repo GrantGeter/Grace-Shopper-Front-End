@@ -79,7 +79,6 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
                                     <p>Price: {product.price}</p>
                                     <p>Category: {product.category}</p>
                                     <p>{product.description}</p>
-
                                     <form onSubmit={() => { addToCart(event, product) }}>
                                         <label>Quantity</label>
                                         <input type='number' defaultValue='1' className="inputBox"/>

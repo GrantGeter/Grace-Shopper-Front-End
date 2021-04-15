@@ -1,24 +1,76 @@
 import { useState, useEffect } from 'react'
 import { getProducts, addProductToOrder } from '../api';
 import { getToken } from '../auth';
-
+const hello = "Hello";
 
 
 const Home = () => {
 
 const [products, setProducts] = useState([]);
+const [orderToAdd, setOrderToAdd] = useState();
+
+
+const addToCart = (event, { id }) => {
+    let count = localStorage.getItem('orderCount');
+    event.preventDefault();
+    const [quantity] = event.target;
+    if (quantity.value) {
+        if (!currentUser) {
+            count++;
+            localStorage.setItem('orderCount', count)
+            localStorage.setItem(`order ${count}`, JSON.stringify({
+                productId: id,
+                quantity: quantity.value
+            }))
+            setDisplayMessage({
+                message: 'Added to cart!',
+                type: 'success'
+            })
+            setIsShown(true);
+        } else {
+            setOrderToAdd({
+                productId: id,
+                quantity: quantity.value
+            })
+        }
+    }
+}
+
+
+
+useEffect(() => {
+        if (orderToAdd) {
+            addProductToOrder(orderToAdd, getToken())
+                .then(response => {
+                    if (response.data) {
+                        setDisplayMessage({
+                            message: 'Added to cart!',
+                            type: 'success'
+                        })
+                        setIsShown(true);
+                    } else {
+                        setDisplayMessage({
+                            message: 'Error adding to cart',
+                            type: 'error'
+                        })
+                        setIsShown(true);
+                    }
+                })
+        }
+   
+}, [orderToAdd])
+
+
 
 
     useEffect(() => {
     getProducts()
             .then(response => {
-                setProducts(response.data.allProducts);
+                setProducts(response.data);
             })
     }, [])
     
     console.log(getProducts())
-
-
 
 
         return (
