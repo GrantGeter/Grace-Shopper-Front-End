@@ -96,7 +96,7 @@ export const deleteProduct = async (id, token) => {
         }
     }
     try {
-        const data = await axios.get(`${baseUrl}/products/delete/${id}`, config);
+        const data = await axios.delete(`${baseUrl}/products/delete/${id}`, config);
         return data;
     } catch (error) {
         console.error(error);
