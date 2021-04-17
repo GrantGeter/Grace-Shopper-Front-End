@@ -37,6 +37,8 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
         }
     }
 
+    
+
     useEffect(() => {
         getProducts()
             .then(response => {
@@ -102,16 +104,20 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
                                         <div className='product' key={index}>
                                             <img src={product.photos} style={{ width: '100%' }}></img>
                                             <div className='container'>
+                                                <a className="twitter-share-button"
+                                                    href="https://twitter.com/intent/tweet">
+                                                    Tweet</a>
                                                 <h4>{product.name}</h4>
                                                 <p>Price: {product.price}</p>
                                                 <p>Category: {product.category}</p>
                                                 <p>{product.description}</p>
-
+                                                
                                                 <form onSubmit={() => { addToCart(event, product) }}>
                                                     <label>Quantity</label>
                                                     <input type='number' defaultValue='1' className="inputBox" />
                                                     <button type='Submit' className='btn'>Add to cart</button>
                                                 </form>
+                                                
                                             </div>
 
                                         </div>
@@ -132,6 +138,10 @@ const Products = ({ currentUser, setDisplayMessage, setIsShown }) => {
                                 <div className='product' key={index}>
                                     <img src={product.photos} style={{ width: '100%' }}></img>
                                     <div className='container'>
+                                        <a className="twitter-share-button"
+                                                    href="https://twitter.com/intent/tweet"
+                                                    data-text="Check out this awesome website!">    
+                                                    </a>
                                         <h4>{product.name}</h4>
                                         <p>Price: {product.price}</p>
                                         <p>Category: {product.category}</p>

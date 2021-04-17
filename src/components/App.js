@@ -38,7 +38,7 @@ const App = () => {
 
     return (
         <Router>
-            <div className="title"><h1>Grace Shopper</h1></div>
+            <div className="title"><h1>Boring T-shirt Company</h1></div>
             <NavBar currentUser={currentUser} />
 
             <Switch>

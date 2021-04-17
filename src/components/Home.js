@@ -25,7 +25,7 @@ const Home = () => {
 
         <div className="homePage">
             <div className="homePageProducts">
-                <h3>Welcome to Grace Shopper!</h3>
+                <h3>Welcome to Boring T-shirt Company!</h3>
                 <h4>Our Featured Products!</h4>
 
                 <div className="featuredProducts">
