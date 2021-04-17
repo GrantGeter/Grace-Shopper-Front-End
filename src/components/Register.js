@@ -42,7 +42,7 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
                             history.push('/');
                         } else {
                             setDisplayMessage({
-                                message: 'Error please try again',
+                                message: 'Error, username already exists!',
                                 type: 'error'
                             })
                             setIsShown(true);
