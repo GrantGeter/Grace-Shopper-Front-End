@@ -5,6 +5,7 @@ const baseUrl = 'http://localhost:3030/api';
 export const loginUser = async (user) => {
     try {
         const data = await axios.post(`${baseUrl}/user/login`, user);
+        console.log(data)
         return data;
     } catch (error) {
         console.error(error);

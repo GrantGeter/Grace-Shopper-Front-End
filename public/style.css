@@ -282,17 +282,15 @@
 .registerDiv {
     width:50%;
     margin:0 auto;
-    /* text-align: left; */
     display: flex;
     flex-flow: row nowrap;
-    /* justify-content: space-between; */
     width: 100%;
     padding: 10px;
     border: solid #2980b9 5px;
     width: 220px;
-    height: 300px;
     border-radius: 5%;
     background-color: rgb(240, 234, 234);
+    margin-top: 20px;
 }
 
 .newProduct {
@@ -353,4 +351,24 @@
     display: flex;
     margin: 15px;
     justify-content: center;
+}
+
+.loginOuter{
+    width: 100%;
+    height: 100vh;
+}
+
+.loginPage {
+    width:50%;
+    margin:0 auto;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    width: 100%;
+    padding: 10px;
+    border: solid #2980b9 5px;
+    width: 220px;
+    height: 300px;
+    border-radius: 5%;
+    background-color: rgb(240, 234, 234);
+    margin-top: 20px;
 }

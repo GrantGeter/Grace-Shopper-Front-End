@@ -30,7 +30,7 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
                 console.log(user);
                 loginUser(user)
                     .then(response => {
-                        if (response.data) {
+                        if (response.data.user) {
                             console.log(response.data)
                             setCurrentUser(response.data.user)
                             storeToken(response.data.token);
@@ -55,16 +55,19 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
     }, [user])
 
     return (
-        <div className="loginPage">
-            <h3>Login Page</h3>
-            <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input type='text' required></input>
-                <label>Password</label>
-                <input type='password' required></input>
-                <input type='submit'></input>
-            </form>
+        <div className="loginOuter">
+            <div className="loginPage">
+            <h3>Login</h3>
+                <form onSubmit={handleSubmit}>
+                    <label>Username</label>
+                    <input className="inputBoxReg" type='text' required></input>
+                    <label>Password</label>
+                    <input className="inputBoxReg" type='password' required></input>
+                    <input type='submit'></input>
+                </form>
+            </div>
         </div>
+        
     )
 }
 
