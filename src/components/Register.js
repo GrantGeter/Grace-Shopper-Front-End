@@ -55,11 +55,10 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
     }, [user])
 
     return (
-        <div className='outerRegisterDiv'>
-            <h3>Register Page</h3>
+        <div className='outerRegisterDiv'>            
             <div className='registerDiv'>
-                {/* <h3>Register Page</h3> */}
                 <form onSubmit={handleSubmit}>
+                <h3>Register</h3>
                     <label>Username</label>
                     <input className="inputBoxReg" type='text' required></input>
                     <label>Password</label>
