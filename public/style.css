@@ -1,80 +1,94 @@
 * {
-    font-family: Dela Gothic One;  
+    font-family: Dela Gothic One;      
+}
+
+#root {
+    background-color: #00E8FC;
+}
+
+.title {
+    padding-left: 10px;
 }
 
 /* Homepage Styling*/
 .homePage {
-  text-align: center;
-  margin: auto;
-  width: 1000px; 
-  height: 100%; 
-  border: 10px ridge #2980b9; 
-  border-radius: 40px;
-  background-color: rgb(240, 234, 234);
-  }
+   height: 100vh; 
+}
+
+.homePageProducts {
+    text-align: center;
+    margin: auto;
+    width: 1000px; 
+    border: 10px ridge #2980b9; 
+    border-radius: 40px;
+    background-color: rgb(240, 234, 234);
+}
 
 
 /* Featured Products Div */
 .featuredProducts {
-  padding: 3%;
-  display: grid;
-  border-width: 5px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr; 
-  column-gap: 10px;
-  row-gap: 15px;
+    padding: 3%;
+    display: grid;
+    border-width: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr; 
+    column-gap: 10px;
+    row-gap: 15px;
+    justify-content: center;
+    align-content: center;
 }
-
-
 
 /*Home Individual Product Div */
 .product{
-
-  left: 5%;
-  grid-template-columns: 2fr 1fr 1fr 2fr;
-  text-align: center;
-  width: 200px;
-  height: 100%;
-
-  border: solid #2980b9 5px;
-  border-radius: 10px;
+    align-self: center;
+    justify-self: center;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    text-align: center;
+    height: 100%;
+    border: solid #2980b9 5px;
+    border-radius: 10px; 
+    width: 80%; 
+    height: auto;
+    background-color: #977e84;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 12px;
 }
 
 /*Home addToCart Button */
 .btn {
-  background: #3498db;
-  border-radius: 10px;
-  color: #fff;
+    background: #3498db;
+    border-radius: 10px;
+    color: #fff;
 }
 
 .btn:hover {
-  background: #2980b9;
+    
 }
 
 .btn:active {
-  background: #2980b9;
-  top: 2px;
+    background: #2980b9;
+    top: 2px;
 }
 
 .btn:before {
-  padding: 10px;
-  position: absolute;
-  height: 100%;
-  left: 0;
-  top: 0;
-  line-height: 3;
-  font-size: 140%;
-  width: 60px;
+    padding: 10px;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    line-height: 3;
+    font-size: 140%;
+    width: 60px;
 }
 
 #acctPage {
     display: grid; 
     grid-template-columns: 2fr 1fr;
+    height: 100vh;
 }
 
 .profile {
-    margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px;    
     border-radius: 40px;
     height: 500px;
     display: grid;  
@@ -92,12 +106,14 @@
     border: 10px ridge #2980b9; 
     border-radius: 40px;
     background-color: rgb(240, 234, 234);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sideProfile {    
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     justify-content: center;
+    height: 500px;
 }
 
 .signOut {
@@ -165,6 +181,10 @@
     color: white;
 }
 
+.cartPage {
+    height: 100vh;
+}
+
 .cart {
     display: flex;
     align-items: center;
@@ -176,6 +196,7 @@
     border: 2px solid lightblue;
     border: solid #2980b9 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(240, 234, 234);
 }
 
 .orderList {
@@ -196,6 +217,22 @@
     width: 100%;
 }
 
+.completed {
+  display: grid;
+  place-content: center;
+  background: #2980b9;
+  height: 80vh;
+  width: 80vw;
+  border: 5px solid #3498db;
+  border-radius: 10px;
+}
+
+.completedContainer {
+  display: grid;
+  place-content: center;
+  padding: 1.75em;
+}
+
 .productList {
     display: grid;
     place-items: center;
@@ -209,14 +246,6 @@
     padding: 10px;
 }
 
-.product {
-  width: 80%;
-  height: auto;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 12px;
-}
-
 .container {
     text-align: center;
     padding: 10px 20px;
@@ -224,44 +253,45 @@
 
 
 .inputBox {
-    width: 50px
+    width: 50px;
+    background-color: rgb(240, 234, 234);
+}
+
+.inputBoxReg {
+    width: 190px;
+    background-color: rgb(240, 234, 234);
 }
 
 .orderHistoryCard {
     margin-bottom: 5px;
     border: solid #2980b9 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: rgb(240, 234, 234);
+    background-color: #977e84;
     border-radius: 10px;
 }
 
 .outerRegisterDiv{
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100vh;
 }
 
 .registerDiv {
-width:50%;
-margin:0 auto;
-display: flex;
-flex-flow: row nowrap;
-width: 100%;
-padding: 10px;
-border: solid #2980b9 5px;
-width: 220px;
-height: 300px;
-border-radius: 5%;
+    width:50%;
+    margin:0 auto;
+    /* text-align: left; */
+    display: flex;
+    flex-flow: row nowrap;
+    /* justify-content: space-between; */
+    width: 100%;
+    padding: 10px;
+    border: solid #2980b9 5px;
+    width: 220px;
+    height: 300px;
+    border-radius: 5%;
 }
 
-.loginDiv {
-width:50%;
-margin:0 auto;
-display: flex;
-flex-flow: row nowrap;
-width: 100%;
-padding: 10px;
-border: solid #2980b9 5px;
-width: 235px;
-height: 300px;
-border-radius: 5%;
+.loginPage {
+    height:100vh;
 }
+
+

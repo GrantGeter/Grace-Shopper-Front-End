@@ -31,6 +31,7 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
                 loginUser(user)
                     .then(response => {
                         if (response.data) {
+                            console.log(response.data)
                             setCurrentUser(response.data.user)
                             storeToken(response.data.token);
                             setDisplayMessage({
@@ -54,9 +55,8 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
     }, [user])
 
     return (
-        <div>
-                        <h3>Login Page</h3>
-        <div className='loginDiv'>
+        <div className="loginPage">
+            <h3>Login Page</h3>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input type='text' required></input>
@@ -64,7 +64,6 @@ const Login = ({ setCurrentUser, setIsShown, setDisplayMessage }) => {
                 <input type='password' required></input>
                 <input type='submit'></input>
             </form>
-        </div>
         </div>
     )
 }

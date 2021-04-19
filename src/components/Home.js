@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react';
 import { getProducts, addProductToOrder } from '../api';
 import { getToken } from '../auth';
-const hello = "Hello";
 
 
-const Home = () => {
-
+const Home = ({currentUser, setDisplayMessage, setIsShown }) => {
 const [products, setProducts] = useState([]);
 const [orderToAdd, setOrderToAdd] = useState();
 
@@ -37,8 +35,16 @@ const addToCart = (event, { id }) => {
 }
 
 
+    useEffect(() => {
+    getProducts()
+            .then(response => {
+                setProducts(response.data.allProducts);
+            })
+    }, [])
+ let initialRender = useRef(true);
 
 useEffect(() => {
+    if (!initialRender.current) {
         if (orderToAdd) {
             addProductToOrder(orderToAdd, getToken())
                 .then(response => {
@@ -57,55 +63,47 @@ useEffect(() => {
                     }
                 })
         }
-   
+    } else {
+        initialRender.current = false;
+    }
 }, [orderToAdd])
 
 
 
 
-    useEffect(() => {
-    getProducts()
-            .then(response => {
-                setProducts(response.data);
-            })
-    }, [])
     
-    console.log(getProducts())
-
 
         return (
 
             <div className="homePage">
+                <div className="homePageProducts">
+                <h3>Welcome to Grace Shopper!</h3>
+                    <h4>Our Featured Products!</h4>
 
-            <h3>Welcome to Grace Shopper!</h3>
-
-
-            <h4>Our Featured Products!</h4>
-    
-    <div className="featuredProducts">
-                    {
-                products.map((product, index) => {
-                            if (index === 8){
-                                return;
+                    <div className="featuredProducts">
+                            {
+                        products.map((product, index) => {
+                                    if (index === 8){
+                                        return;
+                                    }
+                                    return (
+                                        <div className='product' key={index}>
+                                            {/* photo */}
+                                            <h4>{product.name}</h4>
+                                            <p>{product.description}</p>
+                                            <p>Price- {product.price}</p>
+                                            <p>Category- {product.category}</p>    
+                                            <form onSubmit={() => { addToCart(event, product) }}>
+                                                <label>Quantity</label>
+                                                <input type='number' defaultValue='1' className="inputBox" />
+                                                <button className='btn' type = 'submit'>Add to Cart</button>
+                                            </form>                            
+                                        </div>
+                                    )
+                                })
                             }
-                            return (
-                                <div className='product' key={index}>
-                                    {/* photo */}
-                                    <h4>{product.name}</h4>
-                                    <p>{product.description}</p>
-                                    <p>Price- {product.price}</p>
-                                    <p>Category- {product.category}</p>    
-                                    <form onSubmit={() => { addToCart(event, product) }}>
-                                        <label>Quantity</label>
-                                        <input type='number' maxLength="3" className="inputBox"/>
-                                        <button className='btn' type = 'submit'>Add to Cart</button>
-                                    </form>                            
-                                </div>
-                            )
-                        })
-                    }
-                </div> 
-
+                        </div> 
+                </div>
             </div>
         
         )
