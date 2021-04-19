@@ -5,6 +5,7 @@ const baseUrl = 'http://localhost:3030/api';
 export const loginUser = async (user) => {
     try {
         const data = await axios.post(`${baseUrl}/user/login`, user);
+        console.log(data)
         return data;
     } catch (error) {
         console.error(error);
@@ -96,7 +97,7 @@ export const deleteProduct = async (id, token) => {
         }
     }
     try {
-        const data = await axios.get(`${baseUrl}/products/delete/${id}`, config);
+        const data = await axios.delete(`${baseUrl}/products/delete/${id}`, config);
         return data;
     } catch (error) {
         console.error(error);

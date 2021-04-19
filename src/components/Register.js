@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { registerUser } from '../api';
 import { storeToken } from '../auth'
 
 
 const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
     const [user, setUser] = useState();
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -37,9 +39,10 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
                                 type: 'success'
                             })
                             setIsShown(true);
+                            history.push('/');
                         } else {
                             setDisplayMessage({
-                                message: 'Error please try again',
+                                message: 'Error, username already exists!',
                                 type: 'error'
                             })
                             setIsShown(true);
@@ -52,23 +55,22 @@ const Register = ({ setCurrentUser, setDisplayMessage, setIsShown }) => {
     }, [user])
 
     return (
-        <div className='outerRegisterDiv'>
-        <h3>Register Page</h3>
-        <div className ='registerDiv'>
-            {/* <h3>Register Page</h3> */}
-            <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input className="inputBoxReg" type='text' required></input>
-                <label>Password</label>
-                <input className="inputBoxReg" type='password'></input>
-                <label>Name</label>
-                <input className="inputBoxReg" type='text' required></input>
-                <label>Email</label>
-                <input className="inputBoxReg" type='email' required></input>
-                <input type='submit'></input>
+        <div className='outerRegisterDiv'>            
+            <div className='registerDiv'>
+                <form onSubmit={handleSubmit}>
+                <h3>Register</h3>
+                    <label>Username</label>
+                    <input className="inputBoxReg" type='text' required></input>
+                    <label>Password</label>
+                    <input className="inputBoxReg" type='password'></input>
+                    <label>Name</label>
+                    <input className="inputBoxReg" type='text' required></input>
+                    <label>Email</label>
+                    <input className="inputBoxReg" type='email' required></input>
+                    <input type='submit'></input>
 
-            </form>
-        </div>
+                </form>
+            </div>
         </div>
     )
 }

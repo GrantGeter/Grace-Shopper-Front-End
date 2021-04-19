@@ -16,7 +16,6 @@ const Account = ({ setIsShown, setDisplayMessage }) => {
         async function updateFunction() {
             const { data } = await checkUser(getToken());
             const ordersInCart = await getOrders(getToken());
-            console.log(ordersInCart.data)
             setOrders(ordersInCart.data)
             setCurrentUser(data);
             setUpdate("false")

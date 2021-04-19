@@ -48,7 +48,6 @@
     border: solid #2980b9 5px;
     border-radius: 10px; 
     width: 80%; 
-    height: auto;
     background-color: #977e84;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 12px;
@@ -183,6 +182,8 @@
 
 .cartPage {
     height: 100vh;
+    margin-left: 25px;
+    margin-top: 25px;
 }
 
 .cart {
@@ -238,12 +239,13 @@
     place-items: center;
     text-align: center;
     margin: auto;
-    width: 1000px; 
-    height: 100%; 
+    width: 1000px;  
     border: 10px ridge #2980b9; 
     border-radius: 40px;
     background-color: rgb(240, 234, 234);
     padding: 10px;
+    padding-bottom: 50px;
+    padding-top: 50px;
 }
 
 .container {
@@ -278,20 +280,93 @@
 .registerDiv {
     width:50%;
     margin:0 auto;
-    /* text-align: left; */
     display: flex;
     flex-flow: row nowrap;
-    /* justify-content: space-between; */
     width: 100%;
     padding: 10px;
     border: solid #2980b9 5px;
     width: 220px;
-    height: 300px;
     border-radius: 5%;
+    background-color: rgb(240, 234, 234);
+    margin-top: 20px;
+}
+
+.newProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  padding: 10px;
+  border: solid #2980b9 5px;
+  border-radius: 40px;
+  background-color: rgb(240, 234, 234);
+}
+
+.newProductForm {
+  margin:0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+    padding: 40px;
+}
+
+.dashboardProductList {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    margin: 0;
+    width: 40%; 
+    height: 100%; 
+    border: 5px solid #2980b9; 
+    border-radius: 40px;
+    background-color: rgb(240, 234, 234);
+    padding: 10px;
+    overflow: scroll;
+}
+
+.dashboardProduct {
+    border: solid #2980b9 5px;
+    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    background-color: #977e84;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    margin-bottom: 12px;
 }
 
 .loginPage {
     height:100vh;
 }
 
+.searchForm {
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+}
 
+.loginOuter{
+    width: 100%;
+    height: 100vh;
+}
+
+.loginPage {
+    width:50%;
+    margin:0 auto;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    width: 100%;
+    padding: 10px;
+    border: solid #2980b9 5px;
+    width: 220px;
+    height: 300px;
+    border-radius: 5%;
+    background-color: rgb(240, 234, 234);
+    margin-top: 20px;
+}

@@ -16,7 +16,8 @@ import {
     Cart,
     PopupMessage,
     NavBar,
-    CheckoutComplete
+    CheckoutComplete,
+    Dashboard
 } from './index';
 
 import { checkUser } from '../api'
@@ -33,35 +34,13 @@ const App = () => {
             checkUser(getToken())
                 .then(response => setCurrentUser(response.data))
         }
-
     }, [])
 
     return (
         <Router>
-            <div className="title"><h1>Grace Shopper</h1></div>
-            <NavBar />
-            {/* <nav>
-                <ul>
-                    <li>
-                        <Link to='/login'>Login</Link>
-                    </li>
-                    <li>
-                        <Link to='/register'>Register</Link>
-                    </li>
-                    <li>
-                        <Link to='/account'>Account</Link>
-                    </li>
-                    <li>
-                        <Link to='/products'>Products</Link>
-                    </li>
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/cart'>Cart</Link>
-                    </li>
-                </ul>
-            </nav> */}
+            <div className="title"><h1>Boring T-shirt Company</h1></div>
+            <NavBar currentUser={currentUser} />
+
             <Switch>
                 <Route exact path={['/home', '/']}>
                     <Home 
@@ -110,6 +89,12 @@ const App = () => {
                 <Route exact path='/completed'>
                     <CheckoutComplete
                         currentUser={currentUser}
+                    />
+                </Route>
+                <Route exact path='/dashboard'>
+                    <Dashboard
+                        setDisplayMessage={setDisplayMessage}
+                        setIsShown={setIsShown}
                     />
                 </Route>
             </Switch>

@@ -36,7 +36,7 @@ const addToCart = (event, { id }) => {
 
 
     useEffect(() => {
-    getProducts()
+        getProducts()
             .then(response => {
                 setProducts(response.data.allProducts);
             })
@@ -71,42 +71,40 @@ useEffect(() => {
 
 
 
-    
+    return (
 
-        return (
+        <div className="homePage">
+            <div className="homePageProducts">
+                <h3>Welcome to Boring T-shirt Company!</h3>
+                <h4>Our Featured Products!</h4>
 
-            <div className="homePage">
-                <div className="homePageProducts">
-                <h3>Welcome to Grace Shopper!</h3>
-                    <h4>Our Featured Products!</h4>
-
-                    <div className="featuredProducts">
-                            {
+                <div className="featuredProducts">
+                    {
                         products.map((product, index) => {
-                                    if (index === 8){
-                                        return;
-                                    }
-                                    return (
-                                        <div className='product' key={index}>
-                                            {/* photo */}
-                                            <h4>{product.name}</h4>
-                                            <p>{product.description}</p>
-                                            <p>Price- {product.price}</p>
-                                            <p>Category- {product.category}</p>    
-                                            <form onSubmit={() => { addToCart(event, product) }}>
-                                                <label>Quantity</label>
-                                                <input type='number' defaultValue='1' className="inputBox" />
-                                                <button className='btn' type = 'submit'>Add to Cart</button>
-                                            </form>                            
-                                        </div>
-                                    )
-                                })
+                            if (index === 8) {
+                                return;
                             }
-                        </div> 
+                            return (
+                                <div className='product' key={index}>
+                                    {/* photo */}
+                                    <h4>{product.name}</h4>
+                                    <p>{product.description}</p>
+                                    <p>Price- {product.price}</p>
+                                    <p>Category- {product.category}</p>
+                                    <form onSubmit={() => { addToCart(event, product) }}>
+                                        <label>Quantity</label>
+                                        <input type='number' maxLength="3" className="inputBox" />
+                                        <button className='btn' type='submit'>Add to Cart</button>
+                                    </form>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
-        
-        )
+        </div>
+
+    )
 
 }
 
