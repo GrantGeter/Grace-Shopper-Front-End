@@ -76,17 +76,22 @@ useEffect(() => {
         <div className="homePage">
             <div className="homePageProducts">
                 <h3>Welcome to Boring T-shirt Company!</h3>
-                <h4>Our Featured Products!</h4>
+                {/* https://imgur.com/JILcAMv */}
+                <img src={'https://imgur.com/xY6kkh0.jpg'} style={{ width: '65%', border: 'solid' }}></img>
+                <h5>Guaranteed 100% Boring or your money back.</h5>
+                <h4>Our Featured Products</h4>
 
                 <div className="featuredProducts">
                     {
                         products.map((product, index) => {
+                            console.log(product.photos)
+
                             if (index === 8) {
                                 return;
                             }
                             return (
                                 <div className='product' key={index}>
-                                    {/* photo */}
+                                    <img src={product.photos} style={{ width: '100%' }}></img>
                                     <h4>{product.name}</h4>
                                     <p>{product.description}</p>
                                     <p>Price- {product.price}</p>
