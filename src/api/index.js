@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3030/api';
+const baseUrl = 'https://radiant-earth-72759.herokuapp.com/api';
 
 export const loginUser = async (user) => {
     try {
