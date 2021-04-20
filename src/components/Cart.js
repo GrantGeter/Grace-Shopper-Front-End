@@ -66,7 +66,7 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
         orderKeys.map(key => localStorage.removeItem(key));
         localStorage.removeItem('orderCount')
 
-        const response = await axios.post('http://localhost:3030/api/checkout', orders);
+        const response = await axios.post('https://radiant-earth-72759.herokuapp.com/api/checkout', orders);
         const session = response.data
         const result = await stripe.redirectToCheckout({
             sessionId: session.id,
