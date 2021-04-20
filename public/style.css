@@ -370,3 +370,24 @@
     background-color: rgb(240, 234, 234);
     margin-top: 20px;
 }
+
+.socials {
+    display: grid;
+    grid-template-columns: 10fr 1fr 1fr 1fr 1fr 10fr;
+    padding-bottom: 15px;
+    padding-top: 25px;
+}
+
+.footerStuff {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.socials img {
+    border-radius: 25%;
+}
+
+.footerStuff li {
+    list-style: none;
+}

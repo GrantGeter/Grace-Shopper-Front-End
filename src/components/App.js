@@ -99,6 +99,44 @@ const App = () => {
                 </Route>
             </Switch>
             <div>
+                <div className="footerStuff">
+                    <div>
+                        <h3>Company</h3>
+                        <li>About Us</li>
+                        <li>Why plain shirts only?</li>
+                    </div>
+                    <div>
+                        <h3>Customer Assistance</h3>
+                        <li>Live chat</li>
+                        <li>FAQ's</li>
+                        <li>Shipping and Handling</li>
+                        <li>Return Policy</li>
+                        <li>Gift Card</li>
+                        <li>Complaint Department</li>
+                    </div>
+                </div>
+                <div className="socials">
+                    <div></div>
+                    <div>
+                        <a href="https://www.facebook.com"><img src="https://i.imgur.com/vKfJRdf.jpg" height="50px" width="50px"/></a>                        
+                    </div>
+                    <div>
+                        <a href="https://www.twitter.com"><img src="https://i.imgur.com/7OF6qbe.png" height="50px" width="50px"/></a>  
+                    </div>
+                    <div>
+                        <a href="https://www.instagram.com"><img src="https://i.imgur.com/im17PfX.png" height="50px" width="50px"/></a>  
+                    </div>
+                    <div>
+                        <a href="https://www.tiktok.com"><img src="https://i.imgur.com/MuFt9jm.png" height="50px" width="50px"/></a>  
+                    </div>
+                    <div>
+                        <a href="https://www.youtube.com"><img src="https://i.imgur.com/oHO7TrR.png" height="50px" width="50px"/></a>  
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            
+            <div>
                 {
                     isShown ? <PopupMessage
                         displayMessage={displayMessage}
