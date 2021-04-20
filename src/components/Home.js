@@ -96,6 +96,10 @@ useEffect(() => {
                                     <p>{product.description}</p>
                                     <p>Price- {product.price}</p>
                                     <p>Category- {product.category}</p>
+                                    <a className="twitter-share-button"
+                                                    href="https://twitter.com/intent/tweet"
+                                                    data-text="Check out this awesome website!">    
+                                                    </a>
                                     <form onSubmit={() => { addToCart(event, product) }}>
                                         <label>Quantity</label>
                                         <input type='number' maxLength="3" className="inputBox" />
