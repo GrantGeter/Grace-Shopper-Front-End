@@ -120,7 +120,7 @@ const Cart = ({ currentUser, setIsShown, setDisplayMessage }) => {
                                             <p>Price: {product?.price}</p>
                                             <p>Category: {product?.category}</p>
                                             <p>{product?.description}</p>
-                                            {/* add photos */}
+                                            <img src={ product.photos } height="10%" width="10%"/>
                                         </div>
                                         <div>
                                             <p>x{order.quantity}</p>
